@@ -4,43 +4,55 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>AhorrADAs</title>
     <link rel="shortcut icon" href="imagenes/icon-ahorradas.png" type="icon-ahorradas">
+    <link rel="stylesheet" href="style.css">
+    <title>AhorrADAs</title>
+    
   </head>
 
-  <body>
+  <body class="font-montserrat bg-white">
 
-    <header>
-      <nav>
-        <div>
+  <header>
+      <nav class="container bg-fuchsia-300 p-6">
+        <div class="flex">
 
       <!-- sección Titulo con Icono -->
-        <div>
-          <img src="imagenes/icon-billetera.png" alt="AhorrADAs">
-          <h1>AhorrADAs</h1>
+        <div class="px-15 flex gap-4">
+          <picture>
+            <img class="w-8 h-8" src="imagenes/icon-billetera.png" alt="AhorrADAs">
+          </picture>
+          <h1 class="text-4xl text-white font-semibold">
+            AhorrADAs
+          </h1>
         </div>
 
       <!-- sección Menu con links -->
       
         <div>
-          <ul>
+          <ul class="text-lg text-white flex gap-4">
             <li>
-              <a href="">
-                <img src="imagenes/icon-balance.png" alt="balance">
+              <a class="flex gap-2" href="">
+                <picture>
+                <img class="w-6 h-6" src="imagenes/icon-balance.png" alt="balance">
+                </picture>
                 Balance
               </a>
             </li>
 
             <li>
-              <a href="">
-              <img src="imagenes/icon-categorias.png" alt="categorias">
+              <a class="flex gap-2" href="">
+              <picture>
+              <img class="w-6 h-6" src="imagenes/icon-categorias.png" alt="categorias">
+              </picture>
               Categorias
               </a>
             </li>
 
             <li>
-              <a href="">
-              <img src="imagenes/icon-reportes.png" alt="reportes">
+              <a class="flex gap-2" href="">
+              <picture>
+              <img class="w-6 h-6" src="imagenes/icon-reportes.png" alt="reportes">
+              </picture>
               Reportes
               </a>
             </li>  
@@ -58,23 +70,31 @@
 
     <main>
       <!-- sección balance -->
-      <section>
-        <div>
-          <h3>Balance</h3>
+      <section class="">
+        <div class="bg-fuchsia-100 p-6 rounded-lg shadow-lg">
+          <h3 class="text-2xl my-5 font-bold">
+            Balance
+          </h3>
 
-          <div>
-            <h4>Ganancias</h4>
-            <p>+$0</p>
+          <div class="my-4 flex">
+            <h4 class="text-base">
+              Ganancias
+            </h4>
+            <p class="text-sm text-green-600">+$0</p>
           </div>
 
-          <div>
-            <h4>Gastos</h4>
-            <p>-$0</p>
+          <div class="my-4 flex">
+            <h4 class="text-base">
+              Gastos
+            </h4>
+            <p class="text-sm text-red-600">-$0</p>
           </div>
 
-          <div>
-            <h3>Total</h3>
-            <p>$0</p>
+          <div class="my-4 flex">
+            <h3 class="text-lg">
+              Total
+            </h3>
+            <p class="text-sm">$0</p>
           </div>
 
         </div>
