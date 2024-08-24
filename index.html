@@ -19,7 +19,7 @@
     <title>AhorrADAs</title>
   </head>
 
-  <body class="font-montserrat bg-white">
+  <body class="font-montserrat bg-gray-100">
     <header>
       <nav
         class="h-14 px-6 text-lg bg-fuchsia-300 flex flex-wrap justify-between items-center"
@@ -107,7 +107,7 @@
     <main>
       <!-- sección balance -->
       <section class="mt-20 ml-80 w-72">
-        <div class="bg-fuchsia-100 p-6 rounded-lg shadow-lg">
+        <div class="p-6 rounded-lg shadow-lg">
           <h3 class="text-2xl my-5 font-bold text-purple-500">Balance</h3>
 
           <div class="my-4 flex justify-between">
@@ -128,7 +128,7 @@
       </section>
 
       <!-- sección filtros -->
-      <section class="bg-fuchsia-100 p-6 rounded-lg shadow-lg w-72 ml-80 mt-10">
+      <section class="p-6 rounded-lg shadow-lg w-72 ml-80 mt-10">
         <div class="flex justify-between">
           <h2 class="text-2xl font-bold my-5 text-purple-500">Filtros</h2>
           <p
@@ -191,20 +191,63 @@
       </section>
 
       <!-- sección operaciones -->
-      <section>
-        <div>
-          <h3>Operaciones</h3>
-          <button>+ Nueva Operación</button>
+      <section class="w-1/2 mx-auto rounded-lg shadow-lg p-8">
+        <div class="flex justify-between gap-6">
+          <h3 class="text-2xl font-bold my-5 text-purple-500">Operaciones</h3>
+          <button class="my-6 text-base text-purple-900 cursor-pointer bg-fuchsia-300 rounded hover:bg-fuchsia-400 p-1">+ Nueva Operación</button>
         </div>
 
-        <div>
+        <div class="text-center">
           <picture>
             <img src="imagenes/icon-operaciones.png" alt="chanchito-ahorro" />
           </picture>
-          <h4>Sin resultados</h4>
-          <p>Cambia los filtros o agrega operaciones</p>
+          <h4 class="text-2xl my-5 text-purple-500 font-semibold">Sin resultados</h4>
+          <p class="text-purple-500">Cambia los filtros o agrega operaciones</p>
         </div>
       </section>
+
     </main>
+
+    <!--Sección categorias-->
+
+    <section>
+      <div class="w-1/2 mx-auto rounded-lg shadow-lg p-8">
+        <div>
+          <h2 class="text-3xl font-bold my-5 text-purple-500">
+            Categorias
+          </h2>
+          <p class="font-bold">
+            Nombre
+          </p>
+          <div class="flex ml-auto">
+            <input type="text" class="border-solid border-2 rounded-l w-full max-w-full mr-4">
+            <button class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900">Agregar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Sección reportes-->
+
+    <section class="w-1/2 mx-auto rounded-lg shadow-lg p-8">
+      <div>
+        <h2 class="text-3xl font-bold my-5 text-purple-500">
+          Reportes
+        </h2>
+        <picture>
+          <img src="imagenes/icon-sec-reportes.png" alt="imagen-reportes">
+        </picture>
+      </div>
+
+      <div class="text-center">
+        <h3 class="text-2xl my-5 text-purple-500 font-semibold">
+          Operaciones insuficientes
+        </h3>
+        <p class="text-purple-500">
+          Prueba agregando más operaciones
+        </p>
+      </div>
+    </section>
+
   </body>
 </html>
