@@ -19,14 +19,14 @@
     <title>AhorrADAs</title>
   </head>
 
-  <body class="font-montserrat bg-gray-100">
+  <body class="bg-gray-100">
     <header>
       <nav
-        class="h-14 px-6 text-lg bg-fuchsia-300 flex flex-wrap justify-between items-center"
+        class="h-14 px-6 lg:h-20 text-lg bg-fuchsia-300 flex flex-wrap justify-between items-center"
       >
         <div class="flex">
           <button class="h-auto p-2 text-white">
-            <h1>
+            <h1 class="text-2xl lg:text-4xl font-semibold font-montserrat">
               <i class="fa fa-solid fa-wallet"></i>
               AhorrADAS
             </h1>
@@ -38,12 +38,46 @@
             <i class="fa fa-bars" id=""></i>
           </button>
         </div>
+        <!-- Menú de navegación -->
+        <div id="menu" class="hidden lg:flex pr-8 w-auto gap-x-10">
+          <ul class="flex">
+            <li>
+              <a
+                href="#"
+                id=""
+                class="p-2 text-white rounded-lg text-lg font-medium"
+              >
+                <i class="fa fa-solid fa-chart-line mr-1.5"></i>Balance
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                id=""
+                class="p-2 text-white rounded-lg text-lg font-medium"
+              >
+                <i class="fa fa-solid fa-tag mr-1.5"></i>Categorías
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                id="mostrar-reportes"
+                class="p-2 text-white rounded-lg text-lg font-medium"
+              >
+                <i class="fa fa-solid fa-chart-pie mr-1.5"></i>Reportes
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- Menu hamburguesa-->
       </nav>
-      <!-- Menu hamburguesa-->
       <div class="lg:hidden bg-fuchsia-300 px-8 pb-2 shadow-md">
         <ul class="">
           <li><a href="#" id="" class="block h-7 text-white">Balance</a></li>
-          <li><a href="#" id="" class="block h-7 text-white">Categorias</a></li>
+          <li>
+            <a href="#" id="" class="block h-7 text-white">Categorias</a>
+          </li>
           <li><a href="#" id="" class="block h-7 text-white">Reportes</a></li>
         </ul>
       </div>
