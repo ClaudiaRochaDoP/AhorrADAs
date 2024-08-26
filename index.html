@@ -35,7 +35,7 @@
         <!-- Botón del menu hamburguesa -->
         <div class="flex">
           <button class="lg:hidden ml-16 text-lg text-white">
-            <i class="fa fa-bars" id="boton-hamburguesa"></i>
+            <i class="fa fa-bars" id=""></i>
           </button>
         </div>
         <!-- Menú de navegación -->
@@ -72,10 +72,7 @@
         </div>
         <!-- Menu hamburguesa-->
       </nav>
-      <div
-        id="menu-hamburguesa"
-        class="hidden lg:hidden bg-fuchsia-300 px-8 pb-2 shadow-md"
-      >
+      <div class="lg:hidden bg-fuchsia-300 px-8 pb-2 shadow-md">
         <ul class="">
           <li>
             <a href="#" id="" class="block h-7 text-white">Balance</a>
@@ -90,168 +87,184 @@
       </div>
     </header>
 
-    <main>
-      <!-- sección balance -->
-      <section class="mt-18 mx-auto w-5/6">
-        <div class="p-6 rounded-lg shadow-lg">
-          <h3 class="text-2xl my-5 font-bold text-purple-500">Balance</h3>
+    <main class="">
+      <div class="lg:flex lg:flex-col">
+        <!-- sección balance -->
+        <section class="lg:flex lg:w-1/3 mt-18 lg:mx-20 mx-auto w-5/6">
+          <div class="lg:w-full p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl my-5 font-bold text-purple-500">Balance</h3>
 
-          <div class="my-4 flex justify-between">
-            <h4 class="text-base">Ganancias</h4>
-            <p class="text-sm text-green-600">+$0</p>
+            <div class="my-4 flex justify-between">
+              <h4 class="text-base">Ganancias</h4>
+              <p class="text-sm text-green-600">+$0</p>
+            </div>
+
+            <div class="my-4 flex justify-between">
+              <h4 class="text-base">Gastos</h4>
+              <p class="text-sm text-red-600">-$0</p>
+            </div>
+
+            <div class="my-4 flex justify-between">
+              <h3 class="text-lg">Total</h3>
+              <p class="text-sm">$0</p>
+            </div>
           </div>
+        </section>
 
-          <div class="my-4 flex justify-between">
-            <h4 class="text-base">Gastos</h4>
-            <p class="text-sm text-red-600">-$0</p>
+        <!-- sección filtros -->
+        <section
+          class="lg:flex lg:w-1/3 p-6 rounded-lg shadow-lg w-5/6 lg:mx-20 mx-auto mt-10"
+        >
+          <div class="lg:flex lg:flex-col lg:w-full">
+            <div class="flex justify-between">
+              <h2 class="text-2xl font-bold my-5 text-purple-500">Filtros</h2>
+              <p
+                class="my-6 text-base text-purple-900 hover:text-purple-400 cursor-pointer"
+              >
+                Ocultar Filtros
+              </p>
+            </div>
+
+            <div class="flex flex-col gap-y-3">
+              <label for="" class="font-bold">Tipo</label>
+
+              <select
+                name=""
+                id=""
+                class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+              >
+                <option value="todos">Todos</option>
+                <option value="gastos">Gastos</option>
+                <option value="ganancias">Ganancias</option>
+              </select>
+
+              <label for="categoria" class="font-bold">Categoría</label>
+
+              <select
+                name="categoria"
+                id=""
+                class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+              >
+                <option value="todas">Todas</option>
+                <option value="servicios">Servicios</option>
+                <option value="salida">Salida</option>
+                <option value="educación">Educación</option>
+                <option value="transporte">Transporte</option>
+              </select>
+
+              <label for="desde" class="font-bold">Desde</label>
+              <input
+                type="date"
+                name=""
+                id=""
+                class="h-10 w-full border-2 rounded cursor-pointer border-violet-200"
+              />
+
+              <label for="ordenar" class="font-bold">Ordenar por</label>
+
+              <select
+                name="ordenar"
+                id=""
+                class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+              >
+                <option value="mas-reciente">Más reciente</option>
+                <option value="menos-reciente">Menos reciente</option>
+                <option value="mayor-monto">Mayor monto</option>
+                <option value="menor-monto">Menor monto</option>
+                <option value="a-z">A/Z</option>
+                <option value="z-a">Z/A</option>
+              </select>
+            </div>
           </div>
-
-          <div class="my-4 flex justify-between">
-            <h3 class="text-lg">Total</h3>
-            <p class="text-sm">$0</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- sección filtros -->
-      <section class="p-6 rounded-lg shadow-lg w-5/6 mx-auto mt-10">
-        <div class="flex justify-between">
-          <h2 class="text-2xl font-bold my-5 text-purple-500">Filtros</h2>
-          <p
-            class="my-6 text-base text-purple-900 hover:text-purple-400 cursor-pointer"
-          >
-            Ocultar Filtros
-          </p>
-        </div>
-
-        <div class="flex flex-col gap-y-3">
-          <label for="" class="font-bold">Tipo</label>
-
-          <select
-            name=""
-            id=""
-            class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
-          >
-            <option value="todos">Todos</option>
-            <option value="gastos">Gastos</option>
-            <option value="ganancias">Ganancias</option>
-          </select>
-
-          <label for="categoria" class="font-bold">Categoría</label>
-
-          <select
-            name="categoria"
-            id=""
-            class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
-          >
-            <option value="todas">Todas</option>
-            <option value="servicios">Servicios</option>
-            <option value="salida">Salida</option>
-            <option value="educación">Educación</option>
-            <option value="transporte">Transporte</option>
-          </select>
-
-          <label for="desde" class="font-bold">Desde</label>
-          <input
-            type="date"
-            name=""
-            id=""
-            class="h-10 w-full border-2 rounded cursor-pointer border-violet-200"
-          />
-
-          <label for="ordenar" class="font-bold">Ordenar por</label>
-
-          <select
-            name="ordenar"
-            id=""
-            class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
-          >
-            <option value="mas-reciente">Más reciente</option>
-            <option value="menos-reciente">Menos reciente</option>
-            <option value="mayor-monto">Mayor monto</option>
-            <option value="menor-monto">Menor monto</option>
-            <option value="a-z">A/Z</option>
-            <option value="z-a">Z/A</option>
-          </select>
-        </div>
-      </section>
-
-      <!-- sección operaciones -->
-      <section class="mx-auto w-5/6 rounded-lg shadow-lg p-8">
-        <div class="flex flex-col justify-between gap-2">
-          <h3 class="text-2xl font-bold mt-5 text-purple-500">Operaciones</h3>
-          <button
-            class="mb-12 py-3 text-base text-purple-900 cursor-pointer bg-fuchsia-300 rounded hover:bg-fuchsia-400"
-          >
-            + Nueva Operación
-          </button>
-        </div>
-
-        <div class="text-center">
-          <picture class="flex justify-center">
-            <img src="imagenes/icon-operaciones.png" alt="chanchito-ahorro" />
-          </picture>
-          <h4 class="text-2xl my-5 text-purple-500 font-semibold">
-            Sin resultados
-          </h4>
-          <p class="text-purple-500">Cambia los filtros o agrega operaciones</p>
-        </div>
-      </section>
-    </main>
-
-    <!--Sección categorias-->
-
-    <section>
-      <div class="w-5/6 mx-auto rounded-lg shadow-lg p-8">
-        <div>
-          <h2 class="text-3xl font-bold my-5 text-purple-500">Categorias</h2>
-          <p class="font-bold">Nombre</p>
-          <div class="flex ml-auto">
-            <input
-              type="text"
-              class="border-solid border-2 rounded-l w-full max-w-full mr-4"
-            />
+        </section>
+      </div>
+      <div class="lg:w-1/3">
+        <!-- sección operaciones -->
+        <section class="mx-auto w-5/6 lg:w-1/3 rounded-lg shadow-lg p-8">
+          <div class="flex flex-col justify-between gap-2">
+            <h3 class="text-2xl font-bold mt-5 text-purple-500">Operaciones</h3>
             <button
-              class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900"
+              class="mb-12 py-3 text-base text-purple-900 cursor-pointer bg-fuchsia-300 rounded hover:bg-fuchsia-400"
             >
-              Agregar
+              + Nueva Operación
             </button>
           </div>
-        </div>
-        <div class="flex justify-between mt-5">
-          <div>
-            <p class="bg-yellow-100 text-purple-600 p-2 rounded-lg">Trabajo</p>
+
+          <div class="text-center">
+            <picture>
+              <img src="imagenes/icon-operaciones.png" alt="chanchito-ahorro" />
+            </picture>
+            <h4 class="text-2xl my-5 text-purple-500 font-semibold">
+              Sin resultados
+            </h4>
+            <p class="text-purple-500">
+              Cambia los filtros o agrega operaciones
+            </p>
           </div>
-          <div class="mt-2">
-            <a
-              href="#"
-              id="btn-editar"
-              class="mx-3 text-purple-600 hover:text-black"
-              >Editar</a
-            >
-            <a href="#" class="text-purple-600 hover:text-black">Eliminar</a>
-          </div>
-        </div>
+        </section>
       </div>
-    </section>
 
-    <!--Sección reportes-->
-
-    <section class="w-5/6 mx-auto rounded-lg shadow-lg p-8">
+      <!--Sección categorias-->
+      <div class="lg:block">
+        <section lg:block>
+          <div class="w-5/6 mx-auto rounded-lg shadow-lg p-8">
+            <div>
+              <h2 class="text-3xl font-bold my-5 text-purple-500">
+                Categorias
+              </h2>
+              <p class="font-bold">Nombre</p>
+              <div class="flex ml-auto">
+                <input
+                  type="text"
+                  class="border-solid border-2 rounded-l w-full max-w-full mr-4"
+                />
+                <button
+                  class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900"
+                >
+                  Agregar
+                </button>
+              </div>
+            </div>
+            <div class="flex justify-between mt-5">
+              <div>
+                <p class="bg-yellow-100 text-purple-600 p-2 rounded-lg">
+                  Trabajo
+                </p>
+              </div>
+              <div class="mt-2">
+                <a
+                  href="#"
+                  id="btn-editar"
+                  class="mx-3 text-purple-600 hover:text-black"
+                  >Editar</a
+                >
+                <a href="#" class="text-purple-600 hover:text-black"
+                  >Eliminar</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
       <div>
-        <h2 class="text-3xl font-bold my-5 text-purple-500">Reportes</h2>
-        <picture>
-          <img src="imagenes/icon-sec-reportes.png" alt="imagen-reportes" />
-        </picture>
-      </div>
+        <!--Sección reportes-->
 
-      <div class="text-center">
-        <h3 class="text-2xl my-5 text-purple-500 font-semibold">
-          Operaciones insuficientes
-        </h3>
-        <p class="text-purple-500">Prueba agregando más operaciones</p>
+        <section class="w-5/6 mx-auto rounded-lg shadow-lg p-8">
+          <div>
+            <h2 class="text-3xl font-bold my-5 text-purple-500">Reportes</h2>
+            <picture>
+              <img src="imagenes/icon-sec-reportes.png" alt="imagen-reportes" />
+            </picture>
+          </div>
+
+          <div class="text-center">
+            <h3 class="text-2xl my-5 text-purple-500 font-semibold">
+              Operaciones insuficientes
+            </h3>
+            <p class="text-purple-500">Prueba agregando más operaciones</p>
+          </div>
+        </section>
       </div>
-    </section>
-    <script src="main.js"></script>
+    </main>
   </body>
 </html>
