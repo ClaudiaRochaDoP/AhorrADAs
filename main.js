@@ -2,9 +2,9 @@
 const botonHamburguesa = document.getElementById("boton-hamburguesa");
 const menuHamburguesa = document.getElementById("menu-hamburguesa");
 
-// botonHamburguesa.addEventListener("click", function () {
-//   menuHamburguesa.classList.toggle("hidden");
-// });
+botonHamburguesa.addEventListener("click", function () {
+  menuHamburguesa.classList.toggle("hidden");
+});
 
 // Mostrar y ocultar filtros
 
