@@ -2,9 +2,9 @@
 const botonHamburguesa = document.getElementById("boton-hamburguesa");
 const menuHamburguesa = document.getElementById("menu-hamburguesa");
 
-/*botonHamburguesa.addEventListener("click", function () {
-  menuHamburguesa.classList.toggle('hidden');
-});*/
+// botonHamburguesa.addEventListener("click", function () {
+//   menuHamburguesa.classList.toggle("hidden");
+// });
 
 // Mostrar y ocultar filtros
 
@@ -27,7 +27,8 @@ alternarFiltros.addEventListener("click", function () {
 
 /* ----------------------- se muestran los paneles ---------------------*/
 const sectionBalance = document.getElementById("section-balance");
-const sectionCAtergporiasil = document.getElementById("section-categorias");
+const sectionCategorias = document.getElementById("section-categorias");
+const sectionReportes = document.getElementById("section-reportes");
 const sectionOperaciones = document.getElementById("section-operaciones");
 
 /* ----------------------- botones menu de hamburguesa ---------------------*/
@@ -41,6 +42,24 @@ const botonReportesHamburguesa = document.getElementById(
   "boton-reportes-hamburguesa"
 );
 
+function mostrarSection(section) {
+  sectionBalance.classList.add("hidden");
+  sectionCategorias.classList.add("hidden");
+  sectionReportes.classList.add("hidden");
+  sectionOperaciones.classList.add("hidden");
+
+  section.classList.remove("hidden");
+}
+
 botonBalanceHamburguesa.addEventListener("click", function () {
-  sectionFiltros.classList.remove("hidden");
+  mostrarSection(sectionBalance);
+  mostrarSection(sectionOperaciones);
+});
+
+botonCategoriaHamburguesa.addEventListener("click", function () {
+  mostrarSection(sectionCategorias);
+});
+
+botonReportesHamburguesa.addEventListener("click", function () {
+  mostrarSection(sectionReportes);
 });

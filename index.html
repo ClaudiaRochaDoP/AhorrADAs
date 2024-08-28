@@ -107,7 +107,7 @@
         <!-- sección balance -->
         <section
           id="section-balance"
-          class="lg:flex mt-18 lg:mx-20 mx-auto w-5/6"
+          class="block lg:flex mt-18 lg:mx-20 mx-auto w-5/6"
         >
           <div class="lg:w-full p-6 rounded-lg shadow-lg">
             <h3 class="text-2xl my-5 font-bold text-purple-500">Balance</h3>
@@ -127,77 +127,76 @@
               <p class="text-sm">$0</p>
             </div>
           </div>
-        </section>
 
-        <!-- sección filtros -->
-        <section
-          id=""
-          class="lg:flex p-6 rounded-lg shadow-lg w-5/6 lg:mx-20 mx-auto mt-10"
-        >
-          <div class="lg:flex lg:flex-col lg:w-full">
-            <div class="flex justify-between">
-              <h2 class="text-2xl font-bold my-5 text-purple-500">Filtros</h2>
-              <p
-                class="my-6 text-base text-purple-900 hover:text-purple-400 cursor-pointer"
-                id="alternar-filtros"
-              >
-                Ocultar Filtros
-              </p>
-            </div>
+          <!-- sección filtros -->
 
-            <div class="flex flex-col gap-y-3" id="filtros">
-              <label for="" class="font-bold">Tipo</label>
+          <div
+            class="lg:flex p-6 rounded-lg shadow-lg w-full lg:mx-20 mx-auto mt-10"
+          >
+            <div class="lg:flex lg:flex-col lg:w-full">
+              <div class="flex justify-between">
+                <h2 class="text-2xl font-bold my-5 text-purple-500">Filtros</h2>
+                <p
+                  class="my-6 text-base text-purple-900 hover:text-purple-400 cursor-pointer"
+                  id="alternar-filtros"
+                >
+                  Ocultar Filtros
+                </p>
+              </div>
 
-              <select
-                name=""
-                id=""
-                class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
-              >
-                <option value="todos">Todos</option>
-                <option value="gastos">Gastos</option>
-                <option value="ganancias">Ganancias</option>
-              </select>
+              <div class="flex flex-col gap-y-3" id="filtros">
+                <label for="" class="font-bold">Tipo</label>
 
-              <label for="categoria" class="font-bold">Categoría</label>
+                <select
+                  name=""
+                  id=""
+                  class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                >
+                  <option value="todos">Todos</option>
+                  <option value="gastos">Gastos</option>
+                  <option value="ganancias">Ganancias</option>
+                </select>
 
-              <select
-                name="categoria"
-                id=""
-                class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
-              >
-                <option value="todas">Todas</option>
-                <option value="servicios">Servicios</option>
-                <option value="salida">Salida</option>
-                <option value="educación">Educación</option>
-                <option value="transporte">Transporte</option>
-              </select>
+                <label for="categoria" class="font-bold">Categoría</label>
 
-              <label for="desde" class="font-bold">Desde</label>
-              <input
-                type="date"
-                name=""
-                id=""
-                class="h-10 w-full border-2 rounded cursor-pointer border-violet-200"
-              />
+                <select
+                  name="categoria"
+                  id=""
+                  class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                >
+                  <option value="todas">Todas</option>
+                  <option value="servicios">Servicios</option>
+                  <option value="salida">Salida</option>
+                  <option value="educación">Educación</option>
+                  <option value="transporte">Transporte</option>
+                </select>
 
-              <label for="ordenar" class="font-bold">Ordenar por</label>
+                <label for="desde" class="font-bold">Desde</label>
+                <input
+                  type="date"
+                  name=""
+                  id=""
+                  class="h-10 w-full border-2 rounded cursor-pointer border-violet-200"
+                />
 
-              <select
-                name="ordenar"
-                id=""
-                class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
-              >
-                <option value="mas-reciente">Más reciente</option>
-                <option value="menos-reciente">Menos reciente</option>
-                <option value="mayor-monto">Mayor monto</option>
-                <option value="menor-monto">Menor monto</option>
-                <option value="a-z">A/Z</option>
-                <option value="z-a">Z/A</option>
-              </select>
+                <label for="ordenar" class="font-bold">Ordenar por</label>
+
+                <select
+                  name="ordenar"
+                  id=""
+                  class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                >
+                  <option value="mas-reciente">Más reciente</option>
+                  <option value="menos-reciente">Menos reciente</option>
+                  <option value="mayor-monto">Mayor monto</option>
+                  <option value="menor-monto">Menor monto</option>
+                  <option value="a-z">A/Z</option>
+                  <option value="z-a">Z/A</option>
+                </select>
+              </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
       <!-- sección operaciones -->
       <div class="flex lg:w-2/3">
         <section
@@ -226,9 +225,10 @@
           </div>
         </section>
       </div>
+    </section>
 
       <!--Sección categorias-->
-      <div id="section-categorias" class="hidden lg:hidden lg:block">
+      <div id="section-categorias" class="hidden">
         <section lg:block>
           <div class="w-5/6 mx-auto rounded-lg shadow-lg p-8">
             <div>
@@ -269,10 +269,10 @@
           </div>
         </section>
       </div>
-      <div>
-        <!--Sección reportes-->
+      
+      <!--Sección reportes-->
 
-        <section
+      <section id="section-reportes"
           class="hidden lg:hidden w-5/6 mx-auto rounded-lg shadow-lg p-8"
         >
           <div>
@@ -289,7 +289,7 @@
             <p class="text-purple-500">Prueba agregando más operaciones</p>
           </div>
         </section>
-      </div>
+      
     </main>
 
     <script src="main.js"></script>
