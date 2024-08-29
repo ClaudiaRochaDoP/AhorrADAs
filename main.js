@@ -46,14 +46,13 @@ function mostrarSection(section) {
   sectionBalance.classList.add("hidden");
   sectionCategorias.classList.add("hidden");
   sectionReportes.classList.add("hidden");
-  sectionOperaciones.classList.add("hidden");
+  // sectionOperaciones.classList.add("hidden");
 
   section.classList.remove("hidden");
 }
 
 botonBalanceHamburguesa.addEventListener("click", function () {
   mostrarSection(sectionBalance);
-  mostrarSection(sectionOperaciones);
 });
 
 botonCategoriaHamburguesa.addEventListener("click", function () {
