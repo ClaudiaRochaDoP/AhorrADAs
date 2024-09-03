@@ -65,3 +65,21 @@ botonReportesHamburguesa.addEventListener("click", function () {
 
 
 /* -----------------------Se muestran los paneles en el escritorio ---------------------*/
+
+const mostrarBalance = document.getElementById("mostrar-balance");
+const mostrarCategorias = document.getElementById("mostrar-categoria");
+const mostrarReportes = document.getElementById("mostrar-reportes");
+
+mostrarBalance.addEventListener ("click", function() {
+  mostrarSection (sectionBalance);
+});
+
+mostrarCategorias.addEventListener ("click", function (){
+  mostrarSection(sectionCategorias);
+});
+
+mostrarReportes.addEventListener ("click", function(){
+  mostrarSection(sectionReportes);
+});
+
+
