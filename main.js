@@ -42,14 +42,24 @@ const botonReportesHamburguesa = document.getElementById(
   "boton-reportes-hamburguesa"
 );
 
+/*-----------------Botones menú escritorio---------------*/ 
+
+const mostrarBalance = document.getElementById("mostrar-balance");
+const mostrarCategorias = document.getElementById("mostrar-categoria");
+const mostrarReportes = document.getElementById("mostrar-reportes");
+const mostrarOperacion = document.getElementById("boton-operacion");
+const cancelarOperacion = document.getElementById("cancelar-operacion");
+
 function mostrarSection(section) {
   sectionBalance.classList.add("hidden");
   sectionCategorias.classList.add("hidden");
   sectionReportes.classList.add("hidden");
-  // sectionOperaciones.classList.add("hidden");
+  sectionOperaciones.classList.add("hidden");
 
   section.classList.remove("hidden");
 }
+
+/*-------------------Paneles en mobiles-----------*/
 
 botonBalanceHamburguesa.addEventListener("click", function () {
   mostrarSection(sectionBalance);
@@ -66,10 +76,6 @@ botonReportesHamburguesa.addEventListener("click", function () {
 
 /* -----------------------Se muestran los paneles en el escritorio ---------------------*/
 
-const mostrarBalance = document.getElementById("mostrar-balance");
-const mostrarCategorias = document.getElementById("mostrar-categoria");
-const mostrarReportes = document.getElementById("mostrar-reportes");
-
 mostrarBalance.addEventListener ("click", function() {
   mostrarSection (sectionBalance);
 });
@@ -78,8 +84,18 @@ mostrarCategorias.addEventListener ("click", function (){
   mostrarSection(sectionCategorias);
 });
 
-mostrarReportes.addEventListener ("click", function(){
+mostrarReportes.addEventListener ("click", function (){
   mostrarSection(sectionReportes);
 });
 
+mostrarOperacion.addEventListener("click", function () {
+  mostrarSection(sectionOperaciones);
+});
+
+
+/*------------------------Cancelar operacion----------------------------*/
+
+cancelarOperacion.addEventListener("click", function () {
+  mostrarSection (sectionBalance);
+});
 
