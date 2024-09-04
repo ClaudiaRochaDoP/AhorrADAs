@@ -46,7 +46,7 @@
               <a
                 href="#"
                 id="mostrar-balance"
-                class="p-2 text-white rounded-lg text-lg font-medium">
+                class="p-2 text-white rounded-lg text-lg font-medium rounded hover:bg-fuchsia-400">
                 <i class="fa fa-solid fa-chart-line mr-1.5"></i>Balance
               </a>
             </li>
@@ -54,7 +54,7 @@
               <a
                 href="#"
                 id="mostrar-categoria"
-                class="p-2 text-white rounded-lg text-lg font-medium"
+                class="p-2 text-white rounded-lg text-lg font-medium rounded hover:bg-fuchsia-400"
               >
                 <i class="fa fa-solid fa-tag mr-1.5"></i>Categorías
               </a>
@@ -63,7 +63,7 @@
               <a
                 href="#"
                 id="mostrar-reportes"
-                class="p-2 text-white rounded-lg text-lg font-medium"
+                class="p-2 text-white rounded-lg text-lg font-medium rounded hover:bg-fuchsia-400"
               >
                 <i class="fa fa-solid fa-chart-pie mr-1.5"></i>Reportes
               </a>
@@ -208,13 +208,14 @@
                <!------------------ sección operaciones -------------------->
       <div class="flex lg:w-2/3">
         <section
-          id="section-operaciones"
+          id=""
           class="flex flex-col mx-auto w-5/6 rounded-lg shadow-lg p-8"
         >
           <div class="flex flex-col justify-between gap-2">
             <h3 class="text-2xl font-bold mt-5 text-purple-500">Operaciones</h3>
             <button
               class="mb-12 py-3 text-base text-purple-900 cursor-pointer bg-fuchsia-300 rounded hover:bg-fuchsia-400"
+              id="boton-operacion"
             >
               + Nueva Operación
             </button>
@@ -234,7 +235,56 @@
         </section>
       </div>
         </div>
-      
+              
+    </section>
+
+
+
+    <!-----------------Agregar operación----------------->
+    <section class="hidden" id="section-operaciones">
+      <div  class="w-5/6 mx-auto rounded-lg shadow-lg p-8">
+        <div>
+          <h2 class="text-3xl font-bold my-5 text-purple-500">
+            Nueva operación
+          </h2>
+        </div>
+
+        <div class="flex flex-col gap-y-3">
+          <label for="" class="font-bold">Descripción</label>
+          <input type="text" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+
+          <label for="" class="font-bold">Monto</label>
+          <input type="number" value="0" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+
+          <label for="" class="font-bold">Tipo</label>
+          <select name="" id="" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+            <option value="gasto">Gasto</option>
+            <option value="ganancia">Ganancia</option>
+          </select>
+
+          <label for="" class="font-bold">Categoria</label>
+          <select name="" id="" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+            <option value="servicios">Servicios</option>
+          </select>
+
+          <label for="" class="font-bold">Fecha</label>
+          <input type="date" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+
+          <div class="flex justify-end space-x-4">
+          <button class="rounded py-2 px-4 text-base hover:bg-fuchsia-100 text-purple-900" id="cancelar-operacion">
+            Cancelar
+          </button>
+          <button class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900" id="agregar-operacion">
+            Agregar
+          </button>
+          </div>
+
+        </div>
+
+
+      </div>
+
+
     </section>
 
 <!------------------------Sección categorias--------------------------->
