@@ -300,35 +300,39 @@
                 <input
                   type="text"
                   class="border-solid border-2 rounded-l w-full max-w-full mr-4"
+                  id="nombre-categoria"
                 />
                 <button
                   class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900"
+                  id="boton-ag-categoria"
                 >
                   Agregar
                 </button>
               </div>
             </div>
-            <div class="flex justify-between mt-5">
-              <div>
-                <p class="bg-yellow-100 text-purple-600 p-2 rounded-lg">
-                  Trabajo
+
+            <div id="nueva-categoria">
+              <!--Categorias agregadas-->
+            </div>
+          </section>
+
+          <!--Editar Categorias-->
+          <section id="edicion-categorias" class="hidden flex items-center justify-center pt-20 px-4">
+            <div id="edit-categorias" class="flex justify-between mt-5">
+                <p class="text-3xl font-bold my-5 text-purple-500">
+                  Editar Categoria
                 </p>
-              </div>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="editar-nombre-categoria">
               <div class="mt-2">
-                <a
-                  href="#"
-                  id="btn-editar"
-                  class="mx-3 text-purple-600 hover:text-black"
-                  >Editar</a
-                >
-                <a href="#" class="text-purple-600 hover:text-black"
-                  >Eliminar</a
-                >
+               <button id="cancelar-edicion">Cancelar</button>
+               <button id="confirmar-edicion">Editar</button>
+                <!--mx-3 text-purple-600 hover:text-black-->
               </div>
             </div>
           </div>
         </section>
-      </div>
+      
       
 
 <!----------------------Sección reportes-------------------------->
