@@ -109,7 +109,7 @@ const botonAgCategoria = document.getElementById ("boton-ag-categoria");
 const nuevaCategoria = document.getElementById ("nueva-categoria");
 
 function agregarCategoria () {
-  const nombreCat = nombreCategoria.ariaValueMax.trim();
+  const nombreCat = nombreCategoria.value.trim();
 
   if (nombreCat === "") {
     alert("Agregar una categoria aquí.");
@@ -148,10 +148,10 @@ function mostrarCategorias() {
 
     /*contenedor botones*/
     const botonNuevo = document.createElement("div");
-    botonNuevo.className = "flex gap-2"
+    botonNuevo.className = "flex gap-2";
 
-    /*botón editar*/
-    cons botonEditar = document.createElement ("a");
+    /*crear botón editar*/
+    const botonEditar = document.createElement ("a");
     botonEditar.className = "text-purple-600 hover:text-black";
     botonEditar.href = "#";
     botonEditar.textContent = "Editar";
@@ -175,6 +175,49 @@ function mostrarCategorias() {
         }
       });
     });
+
+    botonNuevo.appendChild(botonEditar);
+
+    /*Crear botón eliminar*/
+
+    const botonEliminar = document.createElement("a");
+    botonEliminar.className = "text-purple-600 hover:text-black";
+    botonEliminar.href = "#";
+    botonEliminar.textContent = "Eliminar";
+    botonNuevo.appendChild(botonEliminar);
+
+    botonEliminar.addEventListener("click", function(){
+      categorias.splice(i, 1);
+      localStorage.setItem("categorias", JSON.stringify(categorias));
+      mostrarCategorias();
+    });
+
+    /*Añadir botones al contenedor principal */
+    contenedorCategoria.appendChild(botonNuevo);
+
+    /*Añadir al contenedor de categorias */
+    nuevaCategoria.appendChild(contenedorCategoria);
+  }
+
+  const seleccionCategoria = document.getElementById("seleccion-categoria");
+  const seleccionCatOperacion = document.getElementById("seleccion-cat-operacion");
+
+  seleccionCategoria.innerHTML = "";
+  seleccionCatOperacion.innerHTML = "";
+
+  for (let i=0; categorias.lenght; i++) {
+    const opcion1 = document.createElement("option");
+    opcion1.textContent = categorias[i];
+    seleccionCategoria.appendChild(opcion1);
+
+    const opcion2 = document.createElement("option");
+    opcion2.textContent = categorias[i];
+    seleccionCatOperacion.appendChild(option2);
   }
 }
+
+botonAgCategoria.addEventListener("click", agregarCategoria);
+
+window.onload = mostrarCategorias;
+
 
