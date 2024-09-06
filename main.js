@@ -30,6 +30,7 @@ const sectionBalance = document.getElementById("section-balance");
 const sectionCategorias = document.getElementById("section-categorias");
 const sectionReportes = document.getElementById("section-reportes");
 const sectionOperaciones = document.getElementById("section-operaciones");
+const edicionCategorias = document.getElementById ("edicion-categorias")
 
 /* ----------------------- botones menu de hamburguesa ---------------------*/
 const botonBalanceHamburguesa = document.getElementById(
@@ -55,6 +56,7 @@ function mostrarSection(section) {
   sectionCategorias.classList.add("hidden");
   sectionReportes.classList.add("hidden");
   sectionOperaciones.classList.add("hidden");
+  edicionCategorias.classList.add("hidden");
 
   section.classList.remove("hidden");
 }
@@ -98,4 +100,81 @@ mostrarOperacion.addEventListener("click", function () {
 cancelarOperacion.addEventListener("click", function () {
   mostrarSection (sectionBalance);
 });
+
+
+/*-------------------Agregar, editar o eliminar categorias------------*/
+
+const nombreCategoria = document.getElementById ("nombre-categoria");
+const botonAgCategoria = document.getElementById ("boton-ag-categoria");
+const nuevaCategoria = document.getElementById ("nueva-categoria");
+
+function agregarCategoria () {
+  const nombreCat = nombreCategoria.ariaValueMax.trim();
+
+  if (nombreCat === "") {
+    alert("Agregar una categoria aquí.");
+    return;
+  }
+
+  let categorias = JSON.parse(localStorage.getItem("categorias")) || [];
+
+  if (categorias.includes(nombreCat)) {
+    alert("La categoria ya existe.");
+    return;
+  }
+
+  categorias.push(nombreCat);
+  localStorage.setItem("categorias", JSON.stringify(categorias));
+  nombreCategoria.value = "";
+  mostrarCategorias();
+}
+
+function mostrarCategorias() {
+  let categorias = JSON.parse(localStorage.getItem("categorias")) || [];
+
+  nuevaCategoria.innerHTML = "";
+
+  for (let i = 0; i < categorias.lenght; i++) {
+    /*contenedor para nueva categoria*/
+    const contenedorCategoria = document.createElement("div");
+    contenedorCategoria.className =
+      "flex justify-between items-center p-2 mb-2 rounded-lg"
+
+    /*elemento para cada nombre de categoria*/  
+    const elementoCategoria = document.createElement("p");
+    elementoCategoria.className = "text-purple-600";
+    elementoCategoria.textContent = categorias [i];
+    contenedorCategoria.appendChild(elementoCategoria);
+
+    /*contenedor botones*/
+    const botonNuevo = document.createElement("div");
+    botonNuevo.className = "flex gap-2"
+
+    /*botón editar*/
+    cons botonEditar = document.createElement ("a");
+    botonEditar.className = "text-purple-600 hover:text-black";
+    botonEditar.href = "#";
+    botonEditar.textContent = "Editar";
+
+    botonEditar.addEventListener("click", function(){
+      mostrarSection(edicionCategorias);
+      const nombreCategoriaExistente = categorias[i];
+      const editarCategorias = document.getElementById ("editar-nombre-categoria");
+
+      editarCategorias.value = nombreCategoriaExistente;
+
+      const confirmarEdicion = document.getElementById("confirmar-edicion");
+      confirmarEdicion,addEventListener("click", function (){
+        const nombreNuevo = editarCategorias.value;
+
+        if (nombreNuevo !== "") {
+          categorias[i] = nombreNuevo;
+          this.localStorage.setItem("categorias", JSON.stringify(categorias));
+          mostrarCategorias();
+          mostrarSection(mostrar-categoria);
+        }
+      });
+    });
+  }
+}
 
