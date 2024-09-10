@@ -164,14 +164,14 @@ function mostrarCategorias() {
       editarCategorias.value = nombreCategoriaExistente;
 
       const confirmarEdicion = document.getElementById("confirmar-edicion");
-      confirmarEdicion,addEventListener("click", function (){
+      confirmarEdicion.addEventListener("click", function (){
         const nombreNuevo = editarCategorias.value;
 
         if (nombreNuevo !== "") {
           categorias[i] = nombreNuevo;
-          this.localStorage.setItem("categorias", JSON.stringify(categorias));
+          localStorage.setItem("categorias", JSON.stringify(categorias));
           mostrarCategorias();
-          mostrarSection(mostrar-categoria);
+          mostrarSection(section-categorias);
         }
       });
     });
@@ -212,7 +212,7 @@ function mostrarCategorias() {
 
     const opcion2 = document.createElement("option");
     opcion2.textContent = categorias[i];
-    seleccionCatOperacion.appendChild(option2);
+    seleccionCatOperacion.appendChild(opcion2);
   }
 }
 
