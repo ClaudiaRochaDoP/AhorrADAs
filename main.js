@@ -126,10 +126,11 @@ function agregarCategoria () {
   categorias.push(nombreCat);
   localStorage.setItem("categorias", JSON.stringify(categorias));
   nombreCategoria.value = "";
-  mostrarCategorias();
+  mostrarCategoria();
 }
 
-function mostrarCategorias() {
+
+function mostrarCategoria() {
   let categorias = JSON.parse(localStorage.getItem("categorias")) || [];
 
   nuevaCategoria.innerHTML = "";
@@ -137,8 +138,7 @@ function mostrarCategorias() {
   for (let i = 0; i < categorias.lenght; i++) {
     /*contenedor para nueva categoria*/
     const contenedorCategoria = document.createElement("div");
-    contenedorCategoria.className =
-      "flex justify-between items-center p-2 mb-2 rounded-lg"
+    contenedorCategoria.className = "flex justify-between items-center p-2 mb-2 rounded-lg"
 
     /*elemento para cada nombre de categoria*/  
     const elementoCategoria = document.createElement("p");
@@ -170,7 +170,7 @@ function mostrarCategorias() {
         if (nombreNuevo !== "") {
           categorias[i] = nombreNuevo;
           localStorage.setItem("categorias", JSON.stringify(categorias));
-          mostrarCategorias();
+          mostrarCategoria();
           mostrarSection(section-categorias);
         }
       });
@@ -189,7 +189,7 @@ function mostrarCategorias() {
     botonEliminar.addEventListener("click", function(){
       categorias.splice(i, 1);
       localStorage.setItem("categorias", JSON.stringify(categorias));
-      mostrarCategorias();
+      mostrarCategoria();
     });
 
     /*Añadir botones al contenedor principal */
@@ -218,6 +218,6 @@ function mostrarCategorias() {
 
 botonAgCategoria.addEventListener("click", agregarCategoria);
 
-window.onload = mostrarCategorias;
+window.onload = mostrarCategoria;
 
 
