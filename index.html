@@ -217,8 +217,8 @@
             </button>
           </div>
 
-          <div class="text-center">
-            <picture>
+          <div class="text-center" id="sin-operaciones">
+            <picture id="imagen-operacion">
               <img src="imagenes/icon-operaciones.png" alt="chanchito-ahorro" />
             </picture>
             <h4 class="text-2xl my-5 text-purple-500 font-semibold">
@@ -227,6 +227,10 @@
             <p class="text-purple-500">
               Cambia los filtros o agrega operaciones
             </p>
+          </div>
+
+          <div id="contenedor-nuevaOp" class="w-full p-2 md:p-0">
+            <!--OPERACIONES AGREGADAS-->
           </div>
         </section>
       </div>
@@ -247,31 +251,42 @@
 
         <div class="flex flex-col gap-y-3">
           <label for="" class="font-bold">Descripción</label>
-          <input type="text" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+          <input type="text" 
+                 class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                 id ="descripcion-nuevaOp"       
+          >
 
           <label for="" class="font-bold">Monto</label>
-          <input type="number" value="0" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+          <input type="number" value="0" 
+                 class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                 id="monto-nuevaOp"
+          >
 
           <label for="" class="font-bold">Tipo</label>
-          <select name="" id="" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+          <select name="select" 
+                  id="tipo-nuevaOp" 
+                  class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
             <option value="gasto">Gasto</option>
             <option value="ganancia">Ganancia</option>
           </select>
 
           <label for="" class="font-bold">Categoria</label>
-          <select id="seleccion-cat-operacion" 
-          class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+          <select id="categoria-nuevaOp" 
+                  class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
             <!--categorias agregadas-->
           </select>
 
           <label for="" class="font-bold">Fecha</label>
-          <input type="date" class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+          <input type="date" 
+                 class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                 id="fecha-nuevaOp">
 
           <div class="flex justify-end space-x-4">
           <button class="rounded py-2 px-4 text-base hover:bg-fuchsia-100 text-purple-900" id="cancelar-operacion">
             Cancelar
           </button>
-          <button class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900" id="agregar-operacion">
+          <button class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900" 
+                  id="agregar-operacion">
             Agregar
           </button>
           </div>
@@ -281,8 +296,64 @@
 
       </div>
 
-
     </section>
+
+
+<!------------Editar operación------>
+<section id="editar-operacion" class="hidden my-20">
+  <div class="container mx-auto px-4">
+    <div>
+      <h2 class="text-3xl font-bold my-5 text-purple-500">
+        Editar operación
+      </h2>
+      <div>
+        <div class="flex flex-col gap-y-3">
+          <label for="" class="font-bold">Descripción</label>
+          <input type="text" 
+                 class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                 id ="descripcion-nuevaOp-edd"       
+          >
+
+          <label for="" class="font-bold">Monto</label>
+          <input type="number" value="0" 
+                 class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                 id="monto-nuevaOp-edd"
+          >
+
+          <label for="" class="font-bold">Tipo</label>
+          <select name="select" 
+                  id="tipo-nuevaOp-edd" 
+                  class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+            <option value="gasto">Gasto</option>
+            <option value="ganancia">Ganancia</option>
+          </select>
+
+          <label for="" class="font-bold">Categoria</label>
+          <select id="categoria-nuevaOp-edd" 
+                  class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200">
+            <!--categorias agregadas-->
+          </select>
+
+          <label for="" class="font-bold">Fecha</label>
+          <input type="date" 
+                 class="h-10 w-full pl-2 border-2 rounded cursor-pointer border-violet-200"
+                 id="fecha-nuevaOp-edd">
+      </div>
+
+      <div class="flex justify-end space-x-4">
+        <button class="rounded py-2 px-4 text-base hover:bg-fuchsia-100 text-purple-900" 
+                id="cancelar-operacion-btn">
+          Cancelar
+        </button>
+        <button class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900" 
+                id="editar-operacion-btn">
+          Editar
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!------------------------Sección categorias--------------------------->
       <div id="section-categorias" class="hidden">

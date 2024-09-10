@@ -31,6 +31,7 @@ const sectionCategorias = document.getElementById("section-categorias");
 const sectionReportes = document.getElementById("section-reportes");
 const sectionOperaciones = document.getElementById("section-operaciones");
 const edicionCategorias = document.getElementById ("edicion-categorias")
+const edicionOperaciones = document.getElementById("editar-operacion")
 
 /* ----------------------- botones menu de hamburguesa ---------------------*/
 const botonBalanceHamburguesa = document.getElementById(
@@ -57,6 +58,7 @@ function mostrarSection(section) {
   sectionReportes.classList.add("hidden");
   sectionOperaciones.classList.add("hidden");
   edicionCategorias.classList.add("hidden");
+  edicionOperaciones.classList.add("hidden");
 
   section.classList.remove("hidden");
 }
@@ -200,7 +202,7 @@ function mostrarCategoria() {
   }
 
   const seleccionCategoria = document.getElementById("seleccion-categoria");
-  const seleccionCatOperacion = document.getElementById("seleccion-cat-operacion");
+  const seleccionCatOperacion = document.getElementById("categoria-nuevaOp");
 
   seleccionCategoria.innerHTML = "";
   seleccionCatOperacion.innerHTML = "";
@@ -220,4 +222,198 @@ botonAgCategoria.addEventListener("click", agregarCategoria);
 
 window.onload = mostrarCategoria;
 
+
+/*----------Agregar, editar y eliminar operaciones------------*/
+
+function agregarOperacion() {
+  const descripcionNuevaOp = document.getElementById ("descripcion-nuevaOp").value;
+  const montoNuevaOp = parseFloat(document.getElementById("monto-nuevaOp").value);
+  const tipoNuevaOp = document.getElementById("tipo-nuevaOp").value;
+  const categoriaNuevaOp = document.getElementById("categoria-nuevaOp").value;
+  const fechaNuevaOp = document.getElementById("fecha-nuevaOp").value;
+
+  const operacion = {
+    descripcionNuevaOp,
+    montoNuevaOp,
+    tipoNuevaOp,
+    categoriaNuevaOp,
+    fechaNuevaOp,
+  };
+
+  let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+
+  operaciones.push(operacion);
+
+  localStorage.setItem("operaciones", JSON.stringify(operaciones));
+
+  mostrarOperaciones();
+
+  //vaciar campos
+  document.getElementById("descripcion-nuevaOp").value = "";
+  document.getElementById("monto-nuevaOp").value = "";
+  document.getElementById("tipo-nuevaOp").value = "";
+  document.getElementById("categoria-nuevaOp").value = "";
+  document.getElementById("fecha-nuevaOp").value = "";
+}
+
+function mostrarOperaciones() {
+  const sinOperaciones = getElementById("sin-operaciones");
+  const imagenOperacion = getElementById("imagen-operacion");
+  const contenedorNuevaOp = getElementById("contenedor-nuevaOp");
+
+  let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+
+  contenedorNuevaOp.innerHTML = "";
+
+  if (operaciones.lenght > 0) {
+    imagenOperacion.style.display = "none";
+    sinOperaciones.style.display = "none";
+
+    //contenedor nuevas operaciones
+    const nuevaOpTabla = document.createElement("div");
+    nuevaOpTabla.className = "w-full flex flex-col mb-4"
+
+    //fila titulos
+    const titulosOperaciones = document.createElement("div");
+    titulosOperaciones.className =  "md:flex hidden text-center bg-purple-500 text-white p-2 font-semibold shadow-md rounded-md";
+
+    const titulos = ["Descripción", "Categoría", "Fecha", "Monto", "Acciones"];
+    titulos.forEach((titulo) => {
+      const tituloNuevo = document.createElement("div");
+      tituloNuevo.className = "text-center flex-none px-1 py-1"
+
+      tituloNuevo.textContent = titulo;
+      titulosOperaciones.appendChild(tituloNuevo);
+    });
+    nuevaOpTabla.appendChild(titulosOperaciones);
+
+    
+    //nueva fila de operaciones
+    operaciones.forEach((operacion, index) => {
+      const filaOp = document.createElement("div");
+      filaOp.className = "md:flex p-2 border-b"
+
+      //Agregar descripción, categoría, fecha, monto
+      const celdas = [
+        "descripcionNuevaOp",
+        "categoriaNuevaOp",
+        "fechaNuevaOp",
+        "montoNuevaOp",
+      ];
+      celdas.forEach((campo) => {
+        const celdaNueva = document.createElement("div");
+        celdaNueva.className = "text-center flex-none px-1 py-1";
+
+        //Asignar clases adicionales dependiendo del campo
+        if (campo === "categoriaNuevaOp") {
+          celdaNueva.textContent = operacion[campo];
+          celdaNueva.classList.add("text-sm", "w-auto", "text-center", "font-medium");
+        } else if (campo === fechaNuevaOp) {
+          celdaNueva.textContent = operacion[campo];
+          celdaNueva.classList.add("text-sm", "text-gray-500", "hidden", "md:flex");
+        } else if (campo === "montoNuevaOp") {
+          let montoNuevo = `$${operacion.montoNuevaOp}`;
+          if (operacion.tipoNuevaOp === "GASTO"){
+            montoNuevo = `-$${operacion.montoNuevaOp}`;
+            celdaNueva.classList.add("text-red-600", "font-bold");
+          } else if (operacion.tipoNuevaOp === "GANANCIA") {
+            montoNuevo = `+$${operacion.monyoNuevaOp}`
+            celdaNueva.classList.add("text-green-600", "font-bold");
+          }
+          celdaNueva.textContent = montoNuevo;
+        } else {
+          celdaNueva.textContent = operacion[campo];
+        }
+        filaOp.appendChild(celdaNueva);
+      });
+
+      //Creo contenedor de acciones
+      const acciones = document.createElement("div");
+      acciones.className = "ml-2 flex gap-2 justify-center";
+
+      //botón de Editar
+      const botonEdd = document.createElement("button");
+      botonEdd.textContent = "Editar";
+      botonEdd.className = "text-xs text-blue-500 hover:underline";
+      botonEdd.addEventListener("click", function () {
+        mostrarSection(edicionOperaciones);
+
+        document.getElementById("descripcion-nuevaOp-edd").value =
+        operacion.descripcionNuevaOp;
+        document.getElementById("monto-nuevaOp-edd").value =
+        operacion.montoNuevaOp;
+        document.getElementById("tipo-nuevaOp-edd").value=
+        operacion.tipoNuevaOp;
+
+        const categoriaOpEdd = document.getElementById("categoria-nuevaOp-edd");
+        categoriaOpEdd.innerHTML = "";
+
+        let categorias = JSON.parse(localStorage.getItem("categorias")) || [];
+        categorias.forEach((categoria) => {
+          const editOpciones = document.createElement("option");
+          editOpciones.textContent = categoria;
+          categoriaOpEdd.appendChild(editOpciones);
+        })
+
+        categoriaOpEdd.value = operacion.categoriaNuevaOp;
+
+        document.getElementById("fecha-nuevaOp-edd").value = 
+        operacion.fechaNuevaOp;
+
+        //modificar valores
+        const editarOperacion = document.getElementById("editar-operacion-btn");
+
+        editarOperacion.addEventListener("click", function() {
+          const nuevaDescripcion = document.getElementById("descripcion-nuevaOp-edd").value;
+          const nuevoMonto = parseFloat(document.getElementById("monto-nuevaOp-edd").value);
+          const nuevoTipo = document.getElementById("tipo-nuevaOp-edd").value;
+          const nuevaCategoria = document.getElementById("categoria-nuevaOp-edd").value;
+          const nuevaFecha = document.getElementById("fecha-nuevaOp-edd").value;
+
+          operaciones[index] = {
+            descripcionNuevaOp: nuevaDescripcion,
+            montoNuevaOp: nuevoMonto, 
+            tipoNuevaOp: nuevoTipo,
+            categoriaNuevaOp: nuevaCategoria,
+            fechaNuevaOp: nuevaFecha,
+          };
+
+          localStorage.setItem("operaciones", JSON.stringify(operaciones));
+          mostrarOperaciones();
+          mostrarSection(sectionBalance);
+        });
+      });
+
+      //Botón eliminar
+      const botonEliminar = document.createElement("button");
+      botonEliminar.textContent = "Eliminar";
+      botonEliminar.className = "text-red-500 text-xs hover:underline";
+      botonEliminar.addEventListener("click", function () {
+        operaciones.splice(index, 1);
+        localStorage.setItem("operaciones", JSON.stringify(operaciones));
+        mostrarOperaciones();
+      });
+
+      acciones.appendChild(botonEdd);
+      acciones.appendChild(botonEliminar);
+
+      //Añadir acciones al final de la fila
+      filaOp.appendChild(acciones);
+      nuevaOpTabla.appendChild(filaOp);
+    });
+
+    contenedorNuevaOp.appendChild(nuevaOpTabla);
+    mostrarSection(sectionBalance);
+  } else {
+    imagenOperacion.style.display = "block";
+    sinOperaciones.style.display = "block";
+  }
+}
+
+const botonAgregarOperacion = document
+      .getElementById("agregar-operacion")
+      .addEventListener("click", agregarOperacion);
+
+  window.onload = mostrarOperaciones
+  window.onload = mostrarCategoria
 
