@@ -158,7 +158,7 @@ function mostrarCategoria() {
     botonEditar.href = "#";
     botonEditar.textContent = "Editar";
 
-    botonEditar.addEventListener("click", function(){
+    botonEditar.addEventListener("click", function() {
       mostrarSection(edicionCategorias);
       const nombreCategoriaExistente = categorias[i];
       const editarCategorias = document.getElementById ("editar-nombre-categoria");
@@ -417,3 +417,5 @@ const botonAgregarOperacion = document
   window.onload = mostrarOperaciones
   window.onload = mostrarCategoria
 
+
+  
