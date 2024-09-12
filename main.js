@@ -418,4 +418,66 @@ const botonAgregarOperacion = document
   window.onload = mostrarCategoria
 
 
+/*-----------------------FILTROS-------------------- */
+
+//aplicar filtros
+
+function aplicarFiltros() {
+  const filtroTipo = document.getElementById ("filtro-tipo").value;
+  const filtroCategoria = document.getElementById ("seleccion-categoria").value;
+  const filtroDesde = document.getElementById ("filtro-desde").value;
+  const filtroOrdenar = document.getElementById ("filtro-ordenar").value;
+
+  let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+
+
+  //comprobar si se aplicó algún filtro
+  const filtrosAplicados = filtroTipo !== "TODOSFILT" || filtroCategoria || filtroDesde || filtroOrdenar;
+
+  if (filtrosAplicados) {
+    if (filtroTipo !== "TODOSFILT") {
+      operaciones = operaciones.filter((op) => op.tipoNuevaOp === filtroTipo);
+    }
+
+    if (filtroCategoria && filtroCategoria !== "TODAS") {
+      operaciones = operaciones.filter((op) => op.categoriaNuevaOp === filtroCategoria);
+    }
+
+    if (filtroDesde) {
+      const fechaDesde = new date(filtroDesde);
+      operaciones = operaciones.filter((op) => new Date(op.fechaNuevaOp) => fechaDesde);
+    }
+
+
+    // ORDENAR
+    switch (filtroOrdenar) {
+      case "mas-reciente": operaciones.sort (
+        (a, b) => new Date(b.fechaNuevaOp) - new Date(a.fechaNuevaOp)
+      );
+      break;
+      case "menos-reciente": operaciones.sort(
+        (a,b) => new Date(a.fechaNuevaOp) - new Date(b.fechaNuevaOp)
+      );
+      break;
+      case "mayor-monto": operaciones.sort(
+        (a, b) => b.montoNuevaOp - a.montoNuevaOp);
+      break;
+      case "menor-monto": operaciones.sort(
+        (a, b) => a.montoNuevaOp - b.montoNuevaOp);
+      break;
+      case "a-z": operaciones.sort(
+        (a, b) => a.descripcionNuevaOp.localeCompare(b.descripcionNuevaOp));
+      break;
+      case "z-a": operaciones.sort(
+        (a, b) => b.descripcionNuevaOp.localeCompare(a.descripcionNuevaOp));
+      break;
+      default:
+        break;
+     
+    }
+    mostrarOperaciones(operaciones);
+  } else {
+    mostrarOperacion();
+  }
+}
   
