@@ -33,16 +33,10 @@ const sectionOperaciones = document.getElementById("section-operaciones");
 const edicionCategorias = document.getElementById ("edicion-categorias")
 const edicionOperaciones = document.getElementById("editar-operacion")
 
-/* ----------------------- botones menu de hamburguesa ---------------------*/
-const botonBalanceHamburguesa = document.getElementById(
-  "boton-balance-hamburguesa"
-);
-const botonCategoriaHamburguesa = document.getElementById(
-  "boton-categoria-hamburguesa"
-);
-const botonReportesHamburguesa = document.getElementById(
-  "boton-reportes-hamburguesa"
-);
+/* ----------------Botones menu de hamburguesa ---------------------*/
+const botonBalanceHamburguesa = document.getElementById("boton-balance-hamburguesa");
+const botonCategoriaHamburguesa = document.getElementById("boton-categoria-hamburguesa");
+const botonReportesHamburguesa = document.getElementById("boton-reportes-hamburguesa");
 
 /*-----------------Botones menú escritorio---------------*/ 
 
@@ -445,7 +439,7 @@ function aplicarFiltros() {
 
     if (filtroDesde) {
       const fechaDesde = new date(filtroDesde);
-      operaciones = operaciones.filter((op) => new Date(op.fechaNuevaOp) => fechaDesde);
+      operaciones = operaciones.filter((op) => new Date(op.fechaNuevaOp) >= fechaDesde);
     }
 
 
