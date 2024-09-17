@@ -147,7 +147,7 @@ function mostrarCategoria() {
     botonNuevo.className = "flex gap-2";
 
     /*crear botón editar*/
-    const botonEditar = document.createElement ("a");
+    const botonEditar = document.createElement("a");
     botonEditar.className = "text-purple-600 hover:text-black";
     botonEditar.href = "#";
     botonEditar.textContent = "Editar";
@@ -155,19 +155,32 @@ function mostrarCategoria() {
     botonEditar.addEventListener("click", function() {
       mostrarSection(edicionCategorias);
       const nombreCategoriaExistente = categorias[i];
-      const editarCategorias = document.getElementById ("editar-nombre-categoria");
+      const editarCategorias = document.getElementById("editar-nombre-categoria");
 
       editarCategorias.value = nombreCategoriaExistente;
 
       const confirmarEdicion = document.getElementById("confirmar-edicion");
-      confirmarEdicion.addEventListener("click", function (){
+      confirmarEdicion.addEventListener("click", function () {
         const nombreNuevo = editarCategorias.value;
 
         if (nombreNuevo !== "") {
           categorias[i] = nombreNuevo;
           localStorage.setItem("categorias", JSON.stringify(categorias));
+          
+          //Actualizar categorias en operaciones
+          let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+          operaciones = operaciones.map((op) => {
+            if (op.categoriaNuevaOp === nombreCategoriaExistente) {
+              op.categoriaNuevaOp = nombreNuevo;
+            }
+            return op;
+          });
+          localStorage.setItem("operaciones", JSON.stringify(operaciones));
+
           mostrarCategoria();
           mostrarSection(section-categorias);
+          generarReporte();
+          mostrarOperaciones();
         }
       });
     });
@@ -183,9 +196,29 @@ function mostrarCategoria() {
     botonNuevo.appendChild(botonEliminar);
 
     botonEliminar.addEventListener("click", function(){
-      categorias.splice(i, 1);
-      localStorage.setItem("categorias", JSON.stringify(categorias));
-      mostrarCategoria();
+      const catPorEliminar = categorias [i];
+
+      const confirEliminar = confirm(
+         `¿Confirmás que querés eliminar la categoría "${catPorEliminar}"?`
+      );
+
+      if (confirmacion) {
+        //eliminar categoria
+        categorias = categorias.filter(
+          (categoria) => categoria !== catPorEliminar
+        );
+        localStorage.setItem("categorias", JSON.stringify(categorias));
+
+        //Eliminar operaciones relacionadas
+        let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+        operaciones = operaciones.filter(
+          (operacion) => operacion.categoriaNuevaOp !== catPorEliminar
+        );
+        localStorage.setItem("operaciones", JSON.stringify(operaciones));
+
+        mostrarOperaciones();
+        mostrarCategoria();
+      }
     });
 
     /*Añadir botones al contenedor principal */
@@ -201,7 +234,14 @@ function mostrarCategoria() {
   seleccionCategoria.innerHTML = "";
   seleccionCatOperacion.innerHTML = "";
 
-  for (let i=0; categorias.lenght; i++) {
+  //Añadir opción "todas" al principio
+
+  const opcionTodas = document.createElement("option");
+  opcionTodas.textContent = "Todas";
+  opcionTodas.value = "TODAS";
+  seleccionCategoria.appendChild(opcionTodas);
+
+  for (let i = 0; i < categorias.lenght; i++) {
     const opcion1 = document.createElement("option");
     opcion1.textContent = categorias[i];
     seleccionCategoria.appendChild(opcion1);
