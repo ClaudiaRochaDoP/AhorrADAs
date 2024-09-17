@@ -359,14 +359,15 @@
 </section>
 
 <!------------------------Sección categorias--------------------------->
-      <div id="section-categorias" class="hidden">
-        <section class="lg:block">
+      <section class="lg:block hidden" id="section-categorias">
           <div class="w-5/6 mx-auto rounded-lg shadow-lg p-8">
-            <div>
               <h2 class="text-3xl font-bold my-5 text-purple-500">
                 Categorias
               </h2>
-              <p class="font-bold">Nombre</p>
+            <div>
+              <label for="nombre-categoria" class="font-bold">
+                  Nombre
+              </label>
               <div class="flex ml-auto">
                 <input
                   type="text"
@@ -375,17 +376,18 @@
                 />
                 <button
                   class="rounded py-2 px-4 text-base bg-fuchsia-300 hover:bg-fuchsia-400 text-purple-900"
-                  id="boton-ag-categoria"
-                >
+                  id="boton-ag-categoria">
                   Agregar
                 </button>
               </div>
             </div>
+       
 
             <div id="nueva-categoria">
               <!--Categorias agregadas-->
             </div>
-          </section>
+          </div>
+      </section>
 
           <!--Editar Categorias-->
           <section id="edicion-categorias" class="hidden flex items-center justify-center pt-20 px-4">
