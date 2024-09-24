@@ -134,7 +134,7 @@ function mostrarCategoria() {
   for (let i = 0; i < categorias.lenght; i++) {
     /*contenedor para nueva categoria*/
     const contenedorCategoria = document.createElement("div");
-    contenedorCategoria.className = "flex justify-between items-center p-2 mb-2 rounded-lg"
+    contenedorCategoria.className = "flex justify-between items-center p-2 mb-2 rounded-lg";
 
     /*elemento para cada nombre de categoria*/  
     const elementoCategoria = document.createElement("p");
@@ -195,7 +195,7 @@ function mostrarCategoria() {
     botonEliminar.textContent = "Eliminar";
     botonNuevo.appendChild(botonEliminar);
 
-    botonEliminar.addEventListener("click", function(){
+    botonEliminar.addEventListener("click", function () {
       const catPorEliminar = categorias [i];
 
       const confirEliminar = confirm(
@@ -257,6 +257,7 @@ botonAgCategoria.addEventListener("click", agregarCategoria);
 window.onload = mostrarCategoria;
 
 
+// OPERACIONES
 /*----------Agregar, editar y eliminar operaciones------------*/
 
 function agregarOperacion() {
@@ -281,6 +282,7 @@ function agregarOperacion() {
   localStorage.setItem("operaciones", JSON.stringify(operaciones));
 
   mostrarOperaciones();
+  //generarReporte();
 
   //vaciar campos
   document.getElementById("descripcion-nuevaOp").value = "";
@@ -290,12 +292,16 @@ function agregarOperacion() {
   document.getElementById("fecha-nuevaOp").value = "";
 }
 
-function mostrarOperaciones() {
+function mostrarOperaciones(operaciones = null) {
   const sinOperaciones = getElementById("sin-operaciones");
   const imagenOperacion = getElementById("imagen-operacion");
   const contenedorNuevaOp = getElementById("contenedor-nuevaOp");
 
-  let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+ // let operaciones = JSON.parse(localStorage.getItem("operaciones")) || [];
+
+ if (operaciones === null) {
+  operaciones = JSON.parse(localStorage.getItem("operaciones"))  || [];
+ }
 
   contenedorNuevaOp.innerHTML = "";
 
@@ -314,8 +320,7 @@ function mostrarOperaciones() {
     const titulos = ["Descripción", "Categoría", "Fecha", "Monto", "Acciones"];
     titulos.forEach((titulo) => {
       const tituloNuevo = document.createElement("div");
-      tituloNuevo.className = "text-center flex-none px-1 py-1"
-
+      tituloNuevo.className = "text-center flex-none px-1 py-1";
       tituloNuevo.textContent = titulo;
       titulosOperaciones.appendChild(tituloNuevo);
     });
@@ -325,7 +330,7 @@ function mostrarOperaciones() {
     //nueva fila de operaciones
     operaciones.forEach((operacion, index) => {
       const filaOp = document.createElement("div");
-      filaOp.className = "md:flex p-2 border-b"
+      filaOp.className = "md:flex p-2 border-b";
 
       //Agregar descripción, categoría, fecha, monto
       const celdas = [
@@ -387,7 +392,7 @@ function mostrarOperaciones() {
           const editOpciones = document.createElement("option");
           editOpciones.textContent = categoria;
           categoriaOpEdd.appendChild(editOpciones);
-        })
+        });
 
         categoriaOpEdd.value = operacion.categoriaNuevaOp;
 
@@ -423,9 +428,21 @@ function mostrarOperaciones() {
       botonEliminar.textContent = "Eliminar";
       botonEliminar.className = "text-red-500 text-xs hover:underline";
       botonEliminar.addEventListener("click", function () {
-        operaciones.splice(index, 1);
-        localStorage.setItem("operaciones", JSON.stringify(operaciones));
-        mostrarOperaciones();
+        //Obtener descripcion y categoria de la operacion
+        const descripcionOperacion = operaciones[index].descripcionOperacion;
+        const categoriaOperacion = operaciones[index].categoriaOperacion;
+
+        //mostrar mensaje de confirmación
+        const confirmacion = confirm(
+           `¿Seguro que quieres eliminar la operación?\n\Descripción: ${descripcionOperacion}\nCategoría: ${categoriaOperacion}`
+        );
+
+        if (confirmar) {
+          //si confirma eliminar la operación
+          operaciones.splice(index, 1);
+          localStorage.setItem("operaciones", JSON.stringify(operaciones));
+          mostrarOperaciones();
+        }
       });
 
       acciones.appendChild(botonEdd);
@@ -469,14 +486,17 @@ function aplicarFiltros() {
   const filtrosAplicados = filtroTipo !== "TODOSFILT" || filtroCategoria || filtroDesde || filtroOrdenar;
 
   if (filtrosAplicados) {
+    // tipo
     if (filtroTipo !== "TODOSFILT") {
       operaciones = operaciones.filter((op) => op.tipoNuevaOp === filtroTipo);
     }
 
+    // categoria
     if (filtroCategoria && filtroCategoria !== "TODAS") {
       operaciones = operaciones.filter((op) => op.categoriaNuevaOp === filtroCategoria);
     }
 
+    // fecha
     if (filtroDesde) {
       const fechaDesde = new date(filtroDesde);
       operaciones = operaciones.filter((op) => new Date(op.fechaNuevaOp) >= fechaDesde);
