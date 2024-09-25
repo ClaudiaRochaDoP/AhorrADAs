@@ -131,7 +131,7 @@ function mostrarCategoria() {
 
   nuevaCategoria.innerHTML = "";
 
-  for (let i = 0; i < categorias.lenght; i++) {
+  for(let i = 0; i < categorias.length; i++) {
     /*contenedor para nueva categoria*/
     const contenedorCategoria = document.createElement("div");
     contenedorCategoria.className = "flex justify-between items-center p-2 mb-2 rounded-lg";
@@ -139,7 +139,7 @@ function mostrarCategoria() {
     /*elemento para cada nombre de categoria*/  
     const elementoCategoria = document.createElement("p");
     elementoCategoria.className = "text-purple-600";
-    elementoCategoria.textContent = categorias [i];
+    elementoCategoria.textContent = categorias[i];
     contenedorCategoria.appendChild(elementoCategoria);
 
     /*contenedor botones*/
