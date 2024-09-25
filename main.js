@@ -202,7 +202,7 @@ function mostrarCategoria() {
          `¿Confirmás que querés eliminar la categoría "${catPorEliminar}"?`
       );
 
-      if (confirmacion) {
+      if (confirEliminar) {
         //eliminar categoria
         categorias = categorias.filter(
           (categoria) => categoria !== catPorEliminar
@@ -241,7 +241,7 @@ function mostrarCategoria() {
   opcionTodas.value = "TODAS";
   seleccionCategoria.appendChild(opcionTodas);
 
-  for (let i = 0; i < categorias.lenght; i++) {
+  for (let i = 0; i < categorias.length; i++) {
     const opcion1 = document.createElement("option");
     opcion1.textContent = categorias[i];
     seleccionCategoria.appendChild(opcion1);
